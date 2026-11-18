@@ -1,0 +1,224 @@
+WICKED GAME (Chris Isaak) - MARKOV TOKENS, ALL TRACKS
+=====================================================
+Format (same as marioTokens in the Mario Jazz tutorial):
+  "A2:09"         = note A2, lasting 9 sixteenths
+  "ZZ:03"         = rest of 3 sixteenths
+  "A3+C4+E4:31"   = CHORD: these notes together (needs the chord change in the sketch)
+Source: the Wicked Game MIDI file. Tempo in the file: 240 BPM (double-speed notation).
+Repetition removed: each list keeps only the part the Markov chain can learn from.
+Very long silences (4+ bars) were removed too.
+To use: copy one whole list (from "let" to "];") into sketch.js in place of sourceTokens.
+
+[*] = recommended layer for the background under the poem
+[SINGLE] = single notes, works in the current sketch
+[CHORDS] = contains chord tokens, needs the chord change in the sketch first
+
+Not included: Strings2 (exact copy of Strings1).
+
+
+1. [*] BASS (AcoBass) [SINGLE] - 112 tokens, about 33 bars
+   Recommended: the foundation. Low and steady, and its rhythm varies so the Markov output really changes.
+   Moved one octave up (A2-D3), the octave GarageBand plays.
+------------------------------------------
+let bassTokens = [
+  "A2:09", "ZZ:03", "A2:02", "ZZ:02", "A2:14", "ZZ:02", "G2:09", "ZZ:03",
+  "G2:02", "ZZ:02", "G2:10", "ZZ:02", "C3:03", "ZZ:01", "D3:09", "ZZ:03",
+  "D3:02", "ZZ:02", "D3:13", "ZZ:03", "D3:09", "ZZ:03", "D3:02", "ZZ:02",
+  "D3:11", "ZZ:01", "G2:04", "A2:08", "ZZ:03", "A2:03", "ZZ:02", "A2:15",
+  "ZZ:01", "G2:10", "ZZ:02", "G2:02", "ZZ:02", "G2:12", "C3:04", "D3:09",
+  "ZZ:03", "D3:02", "ZZ:02", "D3:10", "ZZ:06", "D3:09", "ZZ:03", "D3:02",
+  "ZZ:02", "D3:06", "ZZ:02", "D3:04", "G2:04", "A2:08", "ZZ:04", "A2:02",
+  "ZZ:02", "A2:15", "ZZ:01", "G2:08", "ZZ:04", "G2:02", "ZZ:02", "G2:07",
+  "ZZ:05", "C3:03", "ZZ:01", "D3:08", "ZZ:04", "D3:02", "ZZ:02", "D3:10",
+  "ZZ:02", "D3:02", "ZZ:02", "D3:11", "ZZ:01", "A2:03", "ZZ:01", "D3:10",
+  "ZZ:02", "G2:03", "ZZ:01", "A2:09", "ZZ:03", "A2:02", "ZZ:02", "A2:12",
+  "D3:04", "G2:10", "ZZ:02", "G2:02", "ZZ:02", "G2:06", "ZZ:02", "G2:04",
+  "C3:04", "D3:09", "ZZ:03", "D3:02", "ZZ:02", "D3:13", "ZZ:03", "D3:10",
+  "ZZ:02", "D3:02", "ZZ:02", "D3:11", "ZZ:05", "A2:09", "ZZ:03", "A2:02"
+];
+
+
+2. [*] PAD (WarmPad) [CHORDS] - 4 tokens, about 8 bars
+   Recommended: the anchor that holds the layers together.
+   One round of the loop Am - G - D; the whole song repeats exactly this, so the Markov chain can only repeat it too.
+------------------------------------------
+let padTokens = [
+  "A3+C4+E4:31", "G3+B3+D4:32", "F#3+A3+D4:64", "ZZ:01"
+];
+
+
+3. [*] GUITAR (JazzGtr, track 4) [SINGLE] - 173 tokens, about 79 bars
+   Recommended: the Wicked Game guitar texture. Keep it quiet in the mix.
+   Where two notes were played together, the higher one is kept. Last section left out (repeat).
+------------------------------------------
+let guitarTokens = [
+  "E4:40", "ZZ:07", "G3:01", "D4:06", "C4:05", "B3:05", "A3:49", "ZZ:07",
+  "A3:08", "D4:41", "ZZ:05", "G3:01", "B3:01", "D4:05", "C4:06", "B3:05",
+  "A3:20", "D3:04", "G3:04", "D3:04", "F#3:21", "ZZ:03", "A3:08", "D4:40",
+  "ZZ:06", "G3:01", "B3:01", "D4:03", "ZZ:02", "C4:03", "ZZ:03", "B3:05",
+  "A3:20", "D3:04", "F#3:04", "G3:04", "A3:24", "ZZ:08", "A3:04", "E4:04",
+  "C4:04", "A3:04", "D4:04", "C4:04", "A3:03", "ZZ:01", "B3:08", "G3:04",
+  "C4:04", "G3:04", "B3:04", "G3:04", "A3:04", "G3:04", "F#3:20", "D3:04",
+  "F#3:04", "G3:04", "A3:27", "ZZ:05", "A3:04", "E4:04", "C4:04", "A3:04",
+  "D4:04", "C4:04", "A3:04", "B3:08", "C4:04", "B3:04", "G3:04", "C4:04",
+  "B3:04", "G3:07", "ZZ:01", "A3:19", "ZZ:01", "D3:04", "F#3:04", "G3:04",
+  "F#3:30", "A3:04", "E4:04", "C4:04", "A3:04", "D4:04", "C4:04", "A3:02",
+  "ZZ:02", "B3:08", "G3:04", "C4:06", "ZZ:02", "C4:04", "B3:04", "G3:04",
+  "ZZ:04", "F#3:01", "A3:21", "ZZ:02", "F#3:04", "G3:04", "A3:22", "A3:08",
+  "D4:41", "ZZ:05", "G3:01", "B3:01", "D4:05", "C4:06", "B3:05", "A3:20",
+  "D3:04", "G3:04", "D3:04", "F#3:21", "ZZ:03", "A3:08", "D4:40", "ZZ:06",
+  "G3:01", "B3:01", "D4:03", "ZZ:02", "C4:03", "ZZ:03", "B3:05", "A3:20",
+  "D3:03", "G3:05", "D3:04", "F#3:24", "ZZ:12", "E4:04", "C4:04", "A3:04",
+  "D4:04", "C4:04", "A3:02", "ZZ:02", "B3:08", "G3:04", "C4:06", "ZZ:02",
+  "C4:04", "B3:04", "G3:04", "ZZ:04", "F#3:01", "A3:21", "ZZ:02", "F#3:04",
+  "G3:04", "A3:22", "ZZ:10", "A3:04", "E4:04", "C4:04", "A3:04", "D4:04",
+  "C4:04", "A3:04", "B3:08", "G3:04", "C4:08", "C4:04", "B3:04", "G3:04",
+  "A3:24", "D3:04", "F#3:04", "G3:04", "F#3:24"
+];
+
+
+4. GUITAR 2 (JazzGtr, track 7) [CHORDS] - 43 tokens, about 33 bars
+   A second, simpler guitar part, mostly single notes with a few two-note chords. Only plays in parts of the song.
+------------------------------------------
+let guitar2Tokens = [
+  "A3:08", "D4:40", "C4:13", "B3:06", "A3:25", "D3:04", "F#3:04", "G3:04",
+  "F#3:17", "ZZ:07", "A3:08", "D4:43", "C4:11", "B3:06", "A3:24", "D3:04",
+  "F#3:05", "G3:04", "F#3:26", "D3:04", "F#3:04", "G3:04", "F#3:25", "G3:04",
+  "F#3:04", "D3:24", "ZZ:60", "D3:02", "ZZ:10", "D3+F#3:02", "ZZ:10", "D3+F#3:02",
+  "ZZ:02", "D3+G3:03", "ZZ:04", "D3+F#3:21", "D3:04", "F#3:04", "G3:04", "F#3:23",
+  "ZZ:01", "A3:08", "D4:40"
+];
+
+
+5. VOICE (Voice1, the sung melody) [SINGLE] - 203 tokens, about 96 bars
+   Competes with a speaking voice: best for an intro/outro or very quiet.
+   First two vocal sections; the third repeats the first.
+------------------------------------------
+let voiceTokens = [
+  "A3:04", "ZZ:02", "B3:02", "ZZ:05", "C4:02", "ZZ:05", "D4:02", "ZZ:06",
+  "E4:04", "ZZ:04", "D4:16", "C4:03", "ZZ:01", "B3:04", "A3:36", "ZZ:36",
+  "G#3:02", "A3:01", "ZZ:03", "B3:03", "ZZ:03", "C4:02", "ZZ:04", "D4:02",
+  "ZZ:04", "D#4:02", "E4:02", "ZZ:04", "D4:17", "ZZ:03", "C4:04", "B3:04",
+  "A3:55", "ZZ:13", "C5:06", "ZZ:01", "C5:03", "ZZ:02", "C5:05", "ZZ:01",
+  "B4:04", "ZZ:02", "A4:04", "B4:05", "ZZ:01", "A4:14", "G4:08", "B4:04",
+  "A4:56", "ZZ:12", "B4:01", "C5:05", "C5:02", "ZZ:02", "C5:01", "ZZ:02",
+  "C5:04", "ZZ:01", "B4:04", "ZZ:01", "A4:03", "ZZ:02", "B4:04", "ZZ:02",
+  "A4:12", "ZZ:03", "G4:07", "B4:04", "A4:50", "ZZ:06", "A4:08", "E5:36",
+  "ZZ:01", "D5:04", "ZZ:02", "C5:03", "ZZ:02", "D5:06", "B4:06", "A4:54",
+  "ZZ:06", "A4:08", "E5:36", "ZZ:01", "D5:03", "ZZ:03", "C5:03", "ZZ:02",
+  "D5:05", "ZZ:01", "C5:04", "ZZ:02", "B4:04", "A4:63", "G#4:01", "A4:03",
+  "ZZ:01", "B4:02", "ZZ:07", "C5:02", "ZZ:06", "D5:01", "ZZ:07", "D#5:01",
+  "E5:06", "ZZ:01", "D5:12", "ZZ:03", "C5:04", "B4:04", "ZZ:01", "A4:37",
+  "ZZ:35", "E5:03", "ZZ:03", "D#5:01", "E5:02", "ZZ:02", "D#5:01", "E5:05",
+  "D5:05", "C5:04", "ZZ:01", "D5:05", "C5:06", "ZZ:10", "B4:01", "C5:04",
+  "ZZ:01", "B4:04", "ZZ:01", "A4:58", "ZZ:10", "B4:01", "C5:04", "ZZ:02",
+  "C5:01", "ZZ:01", "C5:02", "ZZ:01", "C5:05", "ZZ:01", "B4:04", "ZZ:01",
+  "A4:03", "ZZ:01", "B4:06", "ZZ:01", "A4:12", "ZZ:02", "G4:06", "ZZ:01",
+  "B4:05", "A4:57", "ZZ:12", "B4:01", "C5:04", "ZZ:01", "C5:01", "ZZ:02",
+  "C5:02", "ZZ:01", "C5:04", "ZZ:01", "B4:04", "ZZ:01", "A4:04", "ZZ:01",
+  "A#4:01", "B4:04", "ZZ:01", "A4:14", "ZZ:01", "G4:06", "A#4:01", "B4:05",
+  "A4:51", "ZZ:04", "A4:08", "E5:37", "D5:03", "ZZ:04", "C5:03", "ZZ:02",
+  "D5:05", "ZZ:01", "C5:04", "ZZ:01", "B4:05", "A4:49", "ZZ:06", "A4:08",
+  "D#5:01", "E5:36", "ZZ:01", "D5:05", "ZZ:01", "C5:03", "ZZ:02", "C5:07",
+  "B4:04", "ZZ:01", "A4:66"
+];
+
+
+5b. VOICE 2 (Voice2, the doubled vocal) [SINGLE] - 202 tokens, about 96 bars
+   The same melody as Voice1 (same notes, same order), recorded a second time to thicken the vocal,
+   so the timing is slightly different. Same filtering as Voice1: first two sections, long rests removed.
+   Competes with a speaking voice: best for an intro/outro or very quiet.
+------------------------------------------
+let voice2Tokens = [
+  "G#3:01", "A3:04", "ZZ:01", "B3:02", "ZZ:06", "C4:02", "ZZ:05", "D4:02",
+  "ZZ:06", "E4:04", "ZZ:04", "D4:16", "C4:03", "B3:05", "A3:36", "ZZ:36",
+  "G#3:01", "A3:02", "ZZ:03", "B3:03", "ZZ:03", "C4:02", "ZZ:03", "D4:03",
+  "ZZ:04", "D#4:01", "E4:03", "ZZ:04", "D4:17", "ZZ:02", "C4:04", "B3:05",
+  "A3:55", "ZZ:13", "C5:05", "ZZ:02", "C5:03", "ZZ:02", "C5:05", "ZZ:01",
+  "B4:04", "ZZ:02", "A4:03", "ZZ:01", "B4:05", "ZZ:01", "A4:14", "G4:07",
+  "B4:05", "A4:56", "ZZ:12", "B4:01", "C5:04", "ZZ:01", "C5:02", "ZZ:01",
+  "C5:02", "ZZ:02", "C5:04", "ZZ:01", "B4:04", "ZZ:01", "A4:03", "ZZ:02",
+  "B4:04", "ZZ:01", "A4:13", "ZZ:03", "G4:07", "B4:04", "A4:49", "ZZ:07",
+  "A4:08", "E5:35", "ZZ:02", "D5:04", "ZZ:02", "C5:03", "ZZ:02", "D5:05",
+  "ZZ:01", "B4:05", "A4:55", "ZZ:05", "A4:09", "E5:36", "ZZ:01", "D5:02",
+  "ZZ:04", "C5:02", "ZZ:03", "D5:05", "ZZ:01", "C5:04", "ZZ:01", "B4:04",
+  "ZZ:01", "A4:63", "A4:04", "ZZ:01", "B4:02", "ZZ:06", "C5:02", "ZZ:06",
+  "D5:01", "ZZ:07", "D#5:01", "E5:07", "D5:12", "ZZ:03", "B4:01", "C5:03",
+  "B4:05", "A4:37", "ZZ:35", "D#5:01", "E5:02", "ZZ:04", "D#5:01", "E5:01",
+  "ZZ:03", "E5:05", "D5:05", "ZZ:01", "C5:03", "ZZ:01", "C#5:01", "D5:05",
+  "C5:05", "ZZ:10", "B4:01", "C5:04", "ZZ:02", "B4:04", "ZZ:01", "A4:58",
+  "ZZ:10", "B4:01", "C5:04", "ZZ:01", "C5:02", "ZZ:01", "C5:01", "ZZ:02",
+  "C5:05", "B4:05", "ZZ:01", "A4:03", "ZZ:01", "B4:06", "A4:13", "ZZ:02",
+  "G4:06", "B4:06", "A4:56", "ZZ:12", "B4:01", "C5:04", "ZZ:02", "C5:01",
+  "ZZ:01", "C5:02", "ZZ:02", "C5:04", "ZZ:01", "B4:03", "ZZ:02", "A4:04",
+  "ZZ:01", "B4:05", "A4:15", "ZZ:01", "G4:06", "B4:05", "A4:52", "ZZ:04",
+  "A4:07", "ZZ:01", "E5:36", "ZZ:01", "D5:03", "ZZ:03", "C5:03", "ZZ:02",
+  "D5:05", "ZZ:02", "C5:04", "B4:05", "A4:50", "ZZ:05", "A4:09", "D#5:01",
+  "E5:35", "ZZ:01", "D5:05", "ZZ:02", "C5:03", "ZZ:02", "C5:06", "ZZ:01",
+  "B4:04", "A4:67"
+];
+
+
+6. ELECTRIC PIANO (E.Piano2) [CHORDS] - 248 tokens, about 133 bars
+   Soft rhythmic chords (Am - G - D) played live, so lots of small timing variation = lots for the chain to choose from.
+   Long track, so this is the first part only (about half of its patterns).
+------------------------------------------
+let epianoTokens = [
+  "A3+C4+E4:03", "ZZ:05", "G3+B3+D4:23", "ZZ:01", "G3+B3+D4:02", "ZZ:06", "F#3+A3+D4:63", "ZZ:13",
+  "A3+C4+E4:03", "ZZ:09", "A3+C4+E4:03", "ZZ:05", "G3+B3+D4:23", "ZZ:01", "G3+B3+D4:04", "ZZ:04",
+  "F#3+A3+D4:61", "ZZ:15", "A3+C4+E4:04", "ZZ:08", "A3+C4+E4:03", "ZZ:05", "G3+B3+D4:23", "ZZ:01",
+  "G3+B3+D4:04", "ZZ:04", "F#3+A3+D4:61", "ZZ:07", "A3+C4+E4:18", "ZZ:02", "A3+C4+E4:03", "ZZ:05",
+  "G3+B3+D4:23", "ZZ:02", "G3+B3+D4:03", "ZZ:04", "F#3+A3+D4:59", "ZZ:17", "A3+C4+E4:02", "ZZ:10",
+  "A3+C4+E4:03", "ZZ:05", "G3+B3+D4:22", "ZZ:02", "G3+B3+D4:01", "ZZ:07", "F#3+A3+D4:23", "ZZ:01",
+  "F#3+A3+D4:02", "ZZ:06", "F#3+A3+D4:29", "ZZ:07", "A3+C4+E4:26", "ZZ:02", "G3+B3+D4:33", "ZZ:03",
+  "F#3+A3+D4:18", "ZZ:02", "F#3+A3+D4:02", "ZZ:06", "F#3+A3+D4:32", "ZZ:12", "A3+C4+E4:10", "ZZ:03",
+  "A3+C4+E4:01", "ZZ:06", "G3+B3+D4:36", "ZZ:08", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:02", "ZZ:06",
+  "F#3+A3+D4:23", "ZZ:02", "F#3+A3+D4:02", "ZZ:17", "A3+C4+E4:11", "ZZ:01", "A3+C4+E4:02", "ZZ:06",
+  "G3+B3+D4:31", "ZZ:13", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:02", "ZZ:11", "F#3+A3+D4:01", "ZZ:10",
+  "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:08", "ZZ:08", "A3+C4+E4:19", "ZZ:02", "G3+B3+E4:20", "ZZ:23",
+  "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:02", "ZZ:02", "F#3+A3+D4:02", "ZZ:02",
+  "G3:02", "ZZ:02", "F#3+A3+D4:23", "ZZ:05", "A3+C4+E4:02", "ZZ:10", "A3+C4+E4:01", "ZZ:07",
+  "G3+B3+D4:30", "ZZ:14", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:01", "ZZ:11", "F#3+A3+D4:01", "ZZ:03",
+  "G3+A3+D4:02", "ZZ:06", "F#3+A3+D4:22", "ZZ:07", "A3+C4+E4:02", "ZZ:09", "A3+C4+E4:02", "ZZ:06",
+  "B3:01", "G3+D4:33", "ZZ:10", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:01", "ZZ:11", "F#3+A3+D4:01",
+  "ZZ:03", "F#3+A3+D4:02", "ZZ:06", "F#3+A3+D4:20", "ZZ:08", "A3+C4+E4:11", "ZZ:02", "A3+C4+E4:01",
+  "ZZ:06", "G3+B3+D4:30", "ZZ:07", "F#3+A3+D4:18", "ZZ:01", "F#3+A3+D4:01", "ZZ:07", "F#3+A3+D4:30",
+  "ZZ:15", "A3+C4+E4:01", "ZZ:10", "A3+C4+E4:02", "ZZ:06", "G3+B3+D4:32", "ZZ:04", "F#3+A3+D4:09",
+  "ZZ:03", "F#3+A3+D4:01", "ZZ:03", "F#3+A3+D4:01", "ZZ:03", "A3:01", "F#3+D4:01", "ZZ:10",
+  "F#3+A3+D4:01", "ZZ:03", "F#3+A3+D4:02", "ZZ:06", "F#3+A3+D4:20", "ZZ:08", "A3+C4+E4:02", "ZZ:10",
+  "A3+C4+E4:02", "ZZ:18", "G3+B3+D4:02", "ZZ:10", "G3+B3+D4:01", "ZZ:27", "F#3+A3+D4:01", "ZZ:03",
+  "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:01", "ZZ:03", "G3+A3+D4:02", "ZZ:06", "F#3+A3+D4:19", "ZZ:21",
+  "A3+C4+E4:02", "ZZ:10", "G3+B3+D4:01", "ZZ:19", "G3+B3+D4:01", "ZZ:07", "F#3+A3+D4:02", "ZZ:10",
+  "F#3+A3+D4:01", "ZZ:07", "F#3+A3+D4:01", "ZZ:03", "F#3+A3+D4:02", "ZZ:10", "F#3+A3+D4:01", "ZZ:03",
+  "G3+A3+D4:02", "ZZ:06", "F#3+A3+D4:23", "ZZ:06", "A3+C4+E4:01", "ZZ:10", "A3+C4+E4:02", "ZZ:10",
+  "G3+B3+D4:02", "ZZ:10", "G3+B3+D4:20", "ZZ:08", "A3+D4+F#4:02", "ZZ:10", "A3+D4+F#4:02", "ZZ:10",
+  "A3+D4+F#4:02", "ZZ:02", "A3+D4+F#4:02", "ZZ:02", "B3+D4+F#4:01", "ZZ:03", "A3+D4+F#4:19", "ZZ:10",
+  "E4+A4+C5:01", "ZZ:10", "E4+A4+C5:01", "ZZ:11", "D4+G4+B4:01", "ZZ:03", "D4+G4+B4:02", "ZZ:06",
+  "D4+G4+B4:20", "ZZ:08", "D4+F#4+A4:02", "ZZ:06", "D4+F#4+A4:01", "ZZ:03", "D4+F#4+A4:02", "ZZ:10"
+];
+
+
+7. STRINGS (Strings1) [CHORDS] - 33 tokens, about 74 bars
+   Two-note string chords following Am - G - D, plus a short slow melody in the middle. Only plays in the middle of the song.
+------------------------------------------
+let stringsTokens = [
+  "A4+C5:32", "G4+B4:32", "F#4+A4:62", "ZZ:02", "A4+C5:32", "G4+B4:32", "F#4+A4:62", "ZZ:02",
+  "A4+C5:32", "G4+B4:32", "F#4+A4:62", "ZZ:02", "A4+C5:32", "G4+B4:32", "F#4+A4:64", "A4+C5:32",
+  "G4+B4:32", "F#4+A4:18", "A4:10", "B4:04", "A4:32", "A4+C5:32", "G4+B4:32", "F#4+A4:64",
+  "E4:96", "D4:64", "E4:32", "D4:32", "D4:64", "A4:32", "B4:32", "D5:63",
+  "ZZ:01"
+];
+
+
+8. DRUMS (StdKit2) [CHORDS] - 32 tokens, about 4 bars
+   C2 = kick, D2 = snare, F#2 = hi-hat (General MIDI drum notes).
+   The same 2-bar pattern for the whole song, so this is 4 bars. Played on a synth these sound like beeps:
+   export as MIDI and put it on a GarageBand drum kit to hear real drums.
+------------------------------------------
+let drumTokens = [
+  "C2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03", "D2+F#2:01", "ZZ:03", "C2+F#2:01", "ZZ:03",
+  "C2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03", "D2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03",
+  "C2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03", "D2+F#2:01", "ZZ:03", "C2+F#2:01", "ZZ:03",
+  "C2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03", "D2+F#2:01", "ZZ:03", "F#2:01", "ZZ:03"
+];
+

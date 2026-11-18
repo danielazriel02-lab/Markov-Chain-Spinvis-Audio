@@ -1,0 +1,120 @@
+LIE TO ME (Chris Isaak) - MARKOV TOKENS, ALL TRACKS
+===================================================
+Format (same as marioTokens in the Mario Jazz tutorial):
+  "A3:04"          = note A3, lasting 4 sixteenths
+  "ZZ:04"          = rest of 4 sixteenths
+  "E3+C4+C#4:04"   = CHORD: these notes together (needs the chord change in the sketch)
+
+Already adjusted to fit the Wicked Game tokens:
+  - KEY: moved up 2 semitones, from G minor to A minor (same notes as Wicked Game)
+  - RHYTHM: note lengths doubled, because this file is written at 112 BPM in normal notation
+    and Wicked Game at 240 (double-speed notation). Now one beat means the same in both.
+    So play these at the same tempo as Wicked Game (240, or your slower 180-200).
+Repetition removed: repeated 4-bar blocks and long silences (4+ bars) are taken out.
+All tracks in this file are guitars (the MIDI has no bass, pad, drums or vocals).
+
+[*] = recommended to combine with Wicked Game
+[SINGLE] = single notes, works in the current sketch
+[CHORDS] = contains chord tokens, needs the chord change in the sketch first
+
+Not included: clean 2 (exact copy of clean 1).
+
+
+1. [*] RIFF (clean 1) [SINGLE] - 166 tokens, about 60 bars
+   Recommended: the main riff. Combine with the Wicked Game GUITAR - they share 12 tokens,
+   so with RiTa.markov(2, ...) the chain can really switch between the two songs.
+   Where two notes were played together, the higher one is kept.
+------------------------------------------
+let lieRiffTokens = [
+  "A3:04", "C4:04", "E4:16", "ZZ:04", "B3:04", "D4:04", "E4:04", "ZZ:16",
+  "C4:04", "E4:04", "E4:08", "B3:04", "D4:04", "E4:04", "C4:04", "C4:04",
+  "ZZ:04", "C4:08", "B3:04", "D4:04", "E4:08", "E4:08", "ZZ:08", "A3:04",
+  "C4:04", "E4:08", "B3:04", "D4:04", "E4:16", "ZZ:04", "C4:04", "E4:04",
+  "E4:04", "ZZ:04", "B3:04", "D4:04", "E4:04", "C4:04", "C4:04", "ZZ:04",
+  "C4:04", "ZZ:04", "B3:04", "D4:04", "E4:04", "C4:16", "A3:04", "C4:04",
+  "E4:08", "B3:04", "D4:04", "E4:16", "ZZ:08", "C4:04", "E4:04", "E4:08",
+  "B3:04", "D4:04", "E4:04", "C4:04", "C4:08", "C4:08", "B3:04", "D4:04",
+  "E4:08", "C4:16", "A3:04", "C4:04", "E4:08", "B3:04", "D4:04", "E4:16",
+  "ZZ:08", "C4:04", "E4:04", "E4:08", "B3:04", "D4:04", "E4:04", "C4:04",
+  "C4:08", "C4:08", "B3:04", "D4:04", "E4:08", "C4:16", "A3:04", "C4:04",
+  "E4:08", "B3:04", "D4:04", "E4:16", "ZZ:08", "C4:04", "E4:04", "E4:08",
+  "B3:04", "D4:04", "E4:04", "C4:04", "C4:08", "C4:08", "B3:04", "D4:04",
+  "E4:08", "C4:16", "A3:04", "C4:04", "E4:08", "B3:04", "D4:04", "E4:16",
+  "ZZ:08", "C4:04", "E4:04", "E4:08", "B3:04", "D4:04", "E4:04", "C4:04",
+  "C4:08", "C4:08", "B3:04", "D4:04", "E4:08", "A2:04", "E3:04", "A3:06",
+  "E4:06", "E4:06", "E4:06", "E4:06", "B3:04", "B3:04", "ZZ:04", "A3:04",
+  "ZZ:04", "B3:04", "C4:02", "ZZ:04", "B3:04", "A3:08", "G3:08", "A4:08",
+  "ZZ:08", "B3:04", "E4:04", "A4:08", "ZZ:08", "A2:04", "E3:04", "A3:06",
+  "E4:06", "E4:06", "E4:06", "E4:06", "B3:04", "B3:04", "ZZ:04", "A3:04",
+  "ZZ:04", "B3:04", "A3:02", "ZZ:02", "C4:04", "E4:08"
+];
+
+
+2. ARPEGGIO (clean 3) [SINGLE] - 32 tokens, about 8 bars
+   A steady picked pattern of even notes (A-C-E-C, B-D-E-D, ...). Very repetitive, so only 2 blocks.
+------------------------------------------
+let lieArpeggioTokens = [
+  "A3:04", "C4:04", "E4:04", "C4:04", "A3:04", "C4:04", "E4:04", "C4:04",
+  "B3:04", "D4:04", "E4:04", "D4:04", "B3:04", "D4:04", "E4:04", "D4:04",
+  "C4:04", "E4:04", "E4:04", "C4:04", "C4:04", "E4:04", "E4:04", "C4:04",
+  "A3:04", "C4:04", "E4:04", "C4:04", "B3:04", "D4:04", "E4:04", "D4:04"
+];
+
+
+3. STRUMMED CHORDS (clean 4) [CHORDS] - 64 tokens, about 16 bars
+   Short chord strums with a bass note in between. Chords move Am - Bm - C.
+   Could later give the Wicked Game PAD real choices (after Am: G or Bm), but they would
+   first need reshaping into long held chords like the pad.
+------------------------------------------
+let lieChordTokens = [
+  "A3:04", "E3+C4+C#4:04", "A3+E4+F#4:04", "E3+C4+C#4:04", "A3:04", "E3+C4+C#4:04", "A3+E4+F#4:04", "E3+C4+C#4:04",
+  "B3:04", "E3+C#4+D4:04", "A3+E4+F#4:04", "E3+C#4+D4:04", "B3:04", "E3+C#4+D4:04", "A3+E4+F#4:04", "E3+C#4+D4:04",
+  "C4:04", "A3+E4+F#4:04", "A3+E4+F#4:04", "C4:04", "C4:04", "A3+E4+F#4:04", "A3+E4+F#4:04", "C4:04",
+  "A3:04", "E3+C4+C#4:04", "A3+E4+F#4:04", "E3+C4+C#4:04", "B3:04", "E3+C#4+D4:04", "A3+E4+F#4:04", "E3+C#4+D4:04",
+  "A3:04", "E3+C4:04", "A3+E4:04", "E3+C4:04", "A3:04", "E3+C4:04", "A3+E4:04", "E3+C4:04",
+  "B3:04", "E3+D4:04", "A3+E4:04", "E3+D4:04", "B3:04", "E3+D4:04", "A3+E4:04", "E3+D4:04",
+  "C4:04", "A3+E4:04", "A3+E4:04", "C4:04", "C4:04", "A3+E4:04", "A3+E4:04", "C4:04",
+  "A3:04", "E3+C4:04", "A3+E4:04", "E3+C4:04", "B3:04", "E3+D4:04", "A3+E4:04", "E3+D4:04"
+];
+
+
+4. SLOW NOTES (clean 5) [SINGLE] - 44 tokens, about 50 bars
+   Long, slow notes (A3, B3, C4). Calm; could work as a soft background line.
+   Where two notes were played together, the higher one is kept.
+------------------------------------------
+let lieSlowTokens = [
+  "A3:32", "B3:32", "C4:32", "A3:16", "B3:16", "ZZ:16", "A3:16", "B3:32",
+  "C4:16", "B3:16", "C4:16", "B3:16", "A4:32", "E4:32", "ZZ:24", "A4:08",
+  "ZZ:32", "A4:32", "E4:16", "ZZ:14", "A3:02", "ZZ:28", "C4:04", "ZZ:32",
+  "A3:16", "ZZ:12", "B3:04", "ZZ:24", "C4:08", "ZZ:08", "B3:16", "ZZ:16",
+  "B3:08", "ZZ:24", "A3:16", "B3:08", "ZZ:20", "C4:08", "ZZ:08", "B3:04",
+  "ZZ:28", "B3:04", "ZZ:24", "A4:32"
+];
+
+
+5. HIGH RIFF (clean 6) [SINGLE] - 151 tokens, about 50 bars
+   The riff an octave higher (A4-E5) plus extra parts. Brighter; may compete with a speaking voice.
+   Where two notes were played together, the higher one is kept.
+------------------------------------------
+let lieHighTokens = [
+  "A4:04", "C5:04", "E5:16", "ZZ:04", "B4:04", "D5:04", "E5:04", "ZZ:16",
+  "C5:04", "E5:04", "E5:08", "B4:04", "D5:04", "E5:04", "C5:04", "C5:04",
+  "ZZ:04", "C5:08", "B4:04", "D5:04", "E5:08", "E5:08", "ZZ:08", "A4:04",
+  "C5:04", "E5:08", "B4:04", "D5:04", "E5:16", "ZZ:04", "C5:04", "E5:04",
+  "E5:04", "ZZ:04", "B4:04", "D5:04", "E5:04", "C5:04", "C5:04", "ZZ:04",
+  "C5:04", "ZZ:04", "B4:04", "D5:04", "E5:04", "ZZ:16", "A4:04", "C5:04",
+  "E5:04", "C5:04", "A4:04", "C5:04", "E5:04", "C5:04", "B4:04", "D5:04",
+  "E5:04", "D5:04", "B4:04", "D5:04", "E5:04", "D5:04", "C5:04", "E5:04",
+  "E5:04", "C5:04", "C5:04", "E5:04", "E5:04", "C5:04", "A4:04", "C5:04",
+  "E5:04", "C5:04", "B4:04", "D5:04", "E5:04", "D5:04", "C5:16", "A4:04",
+  "C5:04", "E5:08", "B4:04", "D5:04", "E5:16", "ZZ:08", "C5:04", "E5:04",
+  "E5:08", "B4:04", "D5:04", "E5:04", "C5:04", "C5:08", "C5:08", "B4:04",
+  "D5:04", "E5:08", "A3:04", "E4:04", "A4:06", "E5:06", "E5:06", "E5:06",
+  "E5:06", "B4:04", "B4:04", "ZZ:04", "A4:04", "ZZ:04", "B4:04", "C5:02",
+  "ZZ:04", "B4:04", "A4:08", "G4:08", "A5:08", "ZZ:08", "B4:04", "E5:04",
+  "A5:08", "ZZ:08", "A3:04", "E4:04", "A4:06", "E5:06", "E5:06", "E5:06",
+  "E5:06", "B4:04", "B4:04", "ZZ:04", "A4:04", "ZZ:04", "B4:04", "A4:02",
+  "ZZ:02", "C5:04", "E5:08", "B4:04", "D5:04", "E5:04", "C5:04", "C5:02",
+  "ZZ:06", "C5:08", "B4:04", "D5:04", "E5:08", "ZZ:02", "A5:32"
+];
+
